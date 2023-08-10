@@ -26,7 +26,7 @@ jobs:
       - name: jar run
         run: java -jar artifacts/app-ibank.jar -P:profile=test &
       - name: Build with Gradle
-        run: ./gradlew test --info -D selenide.headless=true
+        run: ./gradlew test --info -Dselenide.headless=true
 
 # Команда `chmod +x gradlew` делает файл gradlew исполняемым в linux. 
 # Команда `./gradlew test` собирает ваш проект и запускает тесты.
