@@ -10,9 +10,14 @@ import lombok.Value;
 import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
-import static javax.print.attribute.standard.MediaSizeName.A;
 
 public class DataGenerator {
+
+    private static final Faker faker = new Faker(new Locale("en"));
+
+    private DataGenerator() {
+    }
+
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
@@ -20,12 +25,8 @@ public class DataGenerator {
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
-    private static final Faker faker = new Faker(new Locale("en"));
 
-    private DataGenerator() {
-    }
-
-    private static void sendRequest(RegistrationDto user) {
+   private static void sendRequest(RegistrationDto user) {
         given()
                 .spec(requestSpec)
                 .body(user)
@@ -68,3 +69,4 @@ public class DataGenerator {
         String status;
     }
 }
+
